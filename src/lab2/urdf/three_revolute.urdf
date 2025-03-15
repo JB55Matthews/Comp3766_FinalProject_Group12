@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<robot name="three_revolute" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- World Link -->
+  <link name="map" />
+
+  <!-- Base Link -->
+  <link name="base_link" />
+
+  <!-- Link 1 -->
+  <link name="link1">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Link 2 -->
+  <link name="link2">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Link 3 -->
+  <link name="link3">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joint map to base link -->
+  <joint name="map_to_base" type="fixed">
+    <parent link="map"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Joint 1 -->
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <!-- xyz is p in the homogeneous transform/RPY calculated following Section B.1.1/B.2 -->
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
+  </joint>
+
+  <!-- Joint 2 -->
+  <joint name="joint2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <!-- xyz is p in the homogeneous transform/RPY calculated following Section B.1.1/B.2 -->
+    <origin xyz="0.5 0 0" rpy="1.57 1.57 0"/> 
+    <axis xyz="0 0 1"/> 
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
+  </joint>
+
+  <!-- Joint 3 -->
+  <joint name="joint3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <!-- xyz is p in the homogeneous transform/RPY calculated following Section B.1.1/B.2 -->
+    <origin xyz="0.2 0 0" rpy="-1.57 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
+  </joint>
+  
+</robot>

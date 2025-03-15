@@ -1,0 +1,13 @@
+<launch>
+  <!-- Load URDF model -->
+  <param name="robot_description" command="cat $(find lab2)/urdf/three_revolute.urdf"/>
+
+  <!-- Start Rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lab2)/rviz/lab2_config.rviz" output="screen"/>
+  
+  <!-- Robot State Publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+
+  <!-- Joint State Publisher GUI -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" output="screen"/>
+</launch>
