@@ -76,6 +76,8 @@ Visualization Manager:
         link5:
           Value: false
         link6:
+          Value: false
+        link7:
           Value: true
         map:
           Value: true

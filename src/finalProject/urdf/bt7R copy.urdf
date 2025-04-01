@@ -10,7 +10,7 @@
   <link name="base_link">
     <visual>
       <geometry>
-        <box size="0.2 0.2 0.2"/> 
+        <box size="0.2 0.2 0.2"/>  <!-- Cube with 20cm sides -->
       </geometry>
       <material name="gray">
         <color rgba="0.6 0.6 0.6 1.0"/>
@@ -20,9 +20,9 @@
 
   <link name="link1" />
 
-  <link name="link2">
+  <link name="link2"/>
 
-  <!-- <link name="link3"> -->
+  <link name="link3">
 
 
   <visual>
@@ -46,9 +46,9 @@
   </visual>
   </link>
 
-<link name="link3">
+<link name="link4">
     <visual>
-      <origin xyz="0 0 0.25"/> 
+      <origin xyz="0 0 -0.275"/> 
       <geometry>
         <cylinder radius="0.05" length="0.55"/>  
       </geometry>
@@ -58,25 +58,47 @@
     </visual>
   </link>
 
-<link name="link4">
-  <visual>
-    <origin xyz="0 0 0.15"/> 
-    <geometry>
-      <cylinder radius="0.05" length="0.3"/>  
-    </geometry>
-    <material name="red">
-      <color rgba="1 0 0 1"/>
-    </material>
-  </visual>
-</link>
 
-<link name="link5" />
+  <!-- <link name="link1"> -->
+    <!-- <visual> -->
+      <!-- <origin xyz="0 0 -0.335"/>  Moves the cylinder down -->
+      <!-- <geometry> -->
+        <!-- <cylinder radius="0.05"  -->
+      <!-- </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link> -->
+  
+  <!-- <link name="link2">
+    <visual>
+    <origin xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.25"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+  </link> -->
+
+  <!-- <link name="link3">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.25"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+  </link> -->
+  
+  <!-- <link name="link4" />
+
+  <link name="link5"/>
 
   <link name="link6">
-
-  <!-- <link name="link3"> -->
-
-
   <visual>
     <geometry>
       <sphere radius="0.05"/>
@@ -85,7 +107,6 @@
       <color rgba="1 1 1 1"/>
     </material>
   </visual>
-
 
   <visual>
     <geometry>
@@ -96,26 +117,25 @@
       <color rgba="0 0 0 1"/>
     </material>
   </visual>
-  </link>
+  </link> -->
 
-<link name="link7">
-  <visual>
-    <origin xyz="0 0 0.03"/> 
-    <geometry>
-      <cylinder radius="0.05" length="0.06"/>  
-    </geometry>
-    <material name="blue">
-      <color rgba="0 0 1 1"/>
-    </material>
-  </visual>
-</link>
-  
+  <!-- <link name="tool">
+    <visual>
+      <origin xyz="-0.1 0 0" rpy="0 1.57 0"/>  
+      <geometry>
+        <cylinder radius="0.01" length="0.2"/> 
+      </geometry>
+      <material name="silver">
+        <color rgba="0.75 0.75 0.75 1"/>
+      </material>
+    </visual>
+  </link> -->
 
   <!-- Joints-->
   <joint name="map_to_base" type="fixed">
     <parent link="map"/>
     <child link="base_link"/>
-    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
   </joint>
 
@@ -153,30 +173,13 @@
     <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
   </joint>
 
-  <joint name="joint5" type="revolute">
-    <parent link="link4"/>
-    <child link="link5"/>
-    <origin xyz="0 0 0.275" rpy="0 0 0"/> 
-    <axis xyz="0 0 1"/>
-    <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
-  </joint>
 
-  <joint name="joint6" type="revolute">
-    <parent link="link5"/>
-    <child link="link6"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/> 
-    <axis xyz="0 1 0"/>
-    <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
-  </joint>
-
-  <joint name="joint7" type="revolute">
+  <!-- <joint name="link6_to_tool" type="fixed">
     <parent link="link6"/>
-    <child link="link7"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/> 
+    <child link="tool"/>
+    <origin xyz="-0.2 0 0" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
-  </joint>
-
-
+    <limit effort="10.0" velocity="1.0" lower="-1.57" upper="1.57"/>
+  </joint> -->
 
 </robot>
