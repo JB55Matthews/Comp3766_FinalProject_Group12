@@ -7,8 +7,8 @@
   <link name="map"/>
 
   <!-- Base Link -->
-  <link name="base_link">
-    <visual>
+  <link name="base_link"/>
+    <!-- <visual>
       <geometry>
         <box size="0.2 0.2 0.2"/> 
       </geometry>
@@ -16,7 +16,7 @@
         <color rgba="0.6 0.6 0.6 1.0"/>
       </material>
     </visual>
-  </link>
+  </link> -->
 
   <link name="link1" />
 
@@ -72,7 +72,7 @@
 
 <link name="link5" />
 
-  <link name="link6">
+<link name="link6">
 
   <!-- <link name="link3"> -->
 
@@ -109,13 +109,25 @@
     </material>
   </visual>
 </link>
+
+<link name="link8">
+  <visual>
+    <origin xyz="0 0 0"/> 
+    <geometry>
+      <cylinder radius="0.00" length="0.0"/>  
+    </geometry>
+    <material name="red">
+      <color rgba="1 0 0 1"/>
+    </material>
+  </visual>
+</link>
   
 
   <!-- Joints-->
   <joint name="map_to_base" type="fixed">
     <parent link="map"/>
     <child link="base_link"/>
-    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
   </joint>
 
@@ -156,7 +168,7 @@
   <joint name="joint5" type="revolute">
     <parent link="link4"/>
     <child link="link5"/>
-    <origin xyz="0 0 0.275" rpy="0 0 0"/> 
+    <origin xyz="0 0 0.3" rpy="0 0 0"/> 
     <axis xyz="0 0 1"/>
     <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
   </joint>
@@ -175,6 +187,13 @@
     <origin xyz="0 0 0" rpy="0 0 0"/> 
     <axis xyz="0 0 1"/>
     <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
+  </joint>
+
+  <joint name="joint8" type="fixed">
+    <parent link="link7"/>
+    <child link="link8"/>
+    <origin xyz="0 0 0.06" rpy="0 0 0"/> 
+    <axis xyz="0 0 1"/>
   </joint>
 
 

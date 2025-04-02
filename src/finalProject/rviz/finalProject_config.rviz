@@ -79,6 +79,8 @@ Visualization Manager:
           Value: false
         link7:
           Value: true
+        link8:
+          Value: false
         map:
           Value: true
       Marker Alpha: 1
@@ -96,6 +98,7 @@ Visualization Manager:
                   link4:
                     link5:
                       link6:
+                        link7:
                         {}
       Update Interval: 0
       Value: true
