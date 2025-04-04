@@ -3,7 +3,7 @@ import rospy
 import numpy as np
 from geometry_msgs.msg import Pose, PoseStamped
 from sensor_msgs.msg import JointState
-import modern_robotics as mr
+# import modern_robotics as mr
 
 L1 = 550
 L2 = 300
@@ -12,10 +12,10 @@ L3 = 60
 ew = 0.001
 ev = 0.0001
 
-position = np.array([0.6, 0.3, 0.0])
-orientation = np.array([[1, 0, 0],
-                        [0, 0, 1],
-                        [0, 1, 0]])
+position = np.array([0.3157, 0.0, 0.6571])
+orientation = np.array([[0, 0, -1],
+                        [0, 1, 0],
+                        [1, 0, 0]])
 
 printed_count = 0
 
@@ -58,3 +58,5 @@ if __name__ == "__main__":
     joint_msg.position = joint_positions
     joint_pub.publish(joint_msg)
     print("Publishing joint states...", joint_msg)
+
+    rospy.spin()
