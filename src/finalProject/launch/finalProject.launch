@@ -1,17 +1,3 @@
-<!-- <launch> -->
-  <!-- Load URDF model -->
-  <!-- <param name="robot_description" command="cat $(find finalProject)/urdf/bt7R.urdf"/> -->
-
-  <!-- Start Rviz -->
-  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find finalProject)/rviz/finalProject_config.rviz" output="screen"/> -->
-  
-  <!-- Robot State Publisher -->
-  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/> -->
-
-  <!-- Joint State Publisher GUI -->
-  <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" output="screen"/> -->
-<!-- </launch> -->
-
 <launch>
   <!-- Load URDF model -->
   <param name="robot_description" command="cat $(find finalProject)/urdf/bt7R.urdf"/>
@@ -28,5 +14,5 @@
   </node>
 
   <!-- Launch the Mux node to handle joint states -->
-  <node name="joint_state_mux" pkg="topic_tools" type="mux" args="/joint_states /mux/gui /mux/script" output = "screen" respawn="true"/>
+  <node name="joint_state_mux" pkg="topic_tools" type="mux" args="/joint_states /mux/gui /mux/script" respawn="true"/>
 </launch>
