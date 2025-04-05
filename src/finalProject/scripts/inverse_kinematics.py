@@ -4,27 +4,25 @@ import numpy as np
 from sensor_msgs.msg import JointState
 from topic_tools.srv import MuxSelect, MuxSelectRequest
 import modern_robotics as mr
+def rotationFromQuaternion(x, y, z, w):
+    return np.array([[1-2*y**2-2*z**2, 2*x*y-2*w*z, 2*x*z+2*w*y],
+     [2*y*x+2*z*w, 1-2*x**2-2*z**2, 2*z*y-2*x*w],
+     [2*x*z-2*w*y, 2*z*y+2*x*w, 1-2*x**2-2*y**2]])
 #---------------------------------------------------------
 # Note: RViz link 8 orientation and position will be 
 #       correct, but expand window to see e-0x as will not show
-#       exact positions if 0. See this by uncommenting zero position.
+#       exact positions if 0, but along lines of "1.7e-09"
 #
 # User input position
 position = np.array([0.3157, 0.0, 0.6571])
-# Zero postion
-# position = np.array([0, 0, 0.91])
 
 # User input rotation matrix
 orientation = np.array([[0, 0, -1],
                         [0, 1, 0],
                         [1, 0, 0]])
-# Zero orientation
-# orientation = np.array([[1, 0, 0],
-#                         [0, 1, 0],
-#                         [0, 0, 1]])
 
 # or give orientation as Quaternion. If so, comment out above matrix
-# orientation = rotationFromQuaternion(x, y, z, w)
+# orientation = rotationFromQuaternion(0, -0.707, 0, 0.707)
 
 # make sure to "source devel/setup.bash"
 # then simply "rosrun finalProject inverse_kinematcs.py"
@@ -36,11 +34,6 @@ L3 = 0.06
 
 ew = 0.001
 ev = 0.0001
-
-def rotationFromQuaternion(x, y, z, w):
-    return [[1-2*y**2-2*z**2, 2*x*y-2*w*z, 2*x*z+2*w*y],
-     [2*y*x+2*z*w, 1-2*x**2-2*z**2, 2*z*y-2*x*w],
-     [2*x*z-2*w*y, 2*z*y+2*x*w, 1-2*x**2-2*y**2]]
 
 def inverse_kinematics(position, orientation):
     theta = np.array([0, np.pi/6, np.pi/6, np.pi/6, 0, np.pi/6, np.pi/6])
@@ -64,7 +57,7 @@ def inverse_kinematics(position, orientation):
                   [0, 0, 0, 1]])
     joint_angles = mr.IKinBody(BList, M, T, theta, ew, ev)
 
-    print("Joint Angles: ", joint_angles) 
+    print("Joint Angles: ", joint_angles)
     return joint_angles[0]
 
 def control_arm():
