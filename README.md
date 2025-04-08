@@ -6,6 +6,8 @@ Barrett Technologies 7 Revolute WAM Robotic Arm
 
 In this project, we implement a modeled version of the Barrett Technologies 7 revolute WAM robotic arm within RViz using ROS. We provide modelling of the forward and inverse kinematcs of the arm, allowing for joint positions to set to manipulate the arm's end-effector, and given a desired position and orientation, use numerical inverse kinematics to find joint positions which put the end-effector in this desired configuration. We also implement this in a way which allows both forward and inverse to be used concurrently without having to relaunch the arm.
 
+A video demonstrating this project can be found [here](https://www.youtube.com/watch?v=As_DzU-19fk)
+
 Launching the Arm
 ------------------
 Firstly, clone the repository. When opened, re-open the folder in the provided dev container, which will open a port which can be opened in your browser. This port is where the RViz window will be. To then launch the arm, run the following commands:
