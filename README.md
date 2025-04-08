@@ -16,7 +16,9 @@ Firstly, clone the repository. When opened, re-open the folder in the provided d
     source devel/setup.bash
     roslaunch finalProject finalProject.launch
 
-This will open the arm in RViz in the open port. Note the joint state publisher gui may be open behind the main window, if this happens you can just move the main window to the side to bring the gui to the front.
+This will open the arm in RViz in the open port. Note the joint state publisher gui may be open behind the main window, if this happens you can just move the main window to the side to bring the gui to the front. Also, modern robotics will need to be installed to make the project. If an error is generated, it is not installed. This can be fixed by running:
+
+    pip install modern-robotics
 
 To run the inverse kinematics script, first go to into the file src/finalProject/scripts/inverse_kinematics.py. Here, there is variables for position and orientation of the end-effector in which you can set. Once set, run the following command to calcualte and move according to the inverse kinematics:
 
